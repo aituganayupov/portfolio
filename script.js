@@ -128,6 +128,7 @@ function renderData() {
         <div class="card__top"><span class="card__date">${esc(tr(e, "date"))}</span><span class="card__place">${esc(tr(e, "place"))}</span></div>
         <h3>${esc(tr(e, "title"))}</h3>
         <p>${esc(tr(e, "description"))}</p>
+        ${e.link ? `<a class="card__link" href="${esc(e.link)}"${e.link.startsWith("#") ? "" : ' target="_blank" rel="noopener"'}>${esc(tr(e, "linkText") || ui("open"))} →</a>` : ""}
       </div>
     </article>`;
   });

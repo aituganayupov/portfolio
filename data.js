@@ -19,7 +19,34 @@ const CONTACTS = {
 // 2. Мероприятия: где я был и в чём участвовал.
 // photos - необязательное поле, список картинок, например ["assets/events/forum.jpg"].
 // Если фото несколько, в карточке появится листалка.
+// link и linkText - необязательная ссылка под описанием (например "#projects" на раздел сайта).
 const events = [
+  {
+    title: "Case Study Autumn'26",
+    date: "Октябрь 2026",
+    place: "Санкт-Петербург",
+    description: "В октябре я прошёл отбор на Case Study Autumn'26 - интенсив, который учит решать бизнес-задачи. Здесь учат думать как аналитик и стратег и защищать свои идеи, разбирают реальные кейсы крупных компаний и готовят к главным кейс-чемпионатам страны. Обучение очень помогло, а ещё я нашёл здесь много друзей. С частью из них мы собрали команду и вместе выступили на кейс-чемпионате. Отдельное уважение организаторам: это профессионалы, которые отлично знают своё дело.",
+    link: "#projects",
+    linkText: "Наш кейс-чемпионат в разделе «Проекты и кейсы»",
+    photos: [
+      "assets/events/casestudy-1.jpg",
+      "assets/events/casestudy-2.jpg",
+      "assets/events/casestudy-3.jpg",
+      "assets/events/casestudy-4.jpg",
+      "assets/events/casestudy-5.jpg",
+      "assets/events/casestudy-6.jpg",
+      "assets/events/casestudy-7.jpg",
+      "assets/events/casestudy-8.jpg",
+      "assets/events/casestudy-9.jpg",
+      "assets/events/casestudy-10.jpg"
+    ],
+    en: {
+      date: "October 2026",
+      place: "St. Petersburg",
+      description: "In October I got selected for Case Study Autumn'26, an intensive program on solving business problems. It teaches you to think like an analyst and strategist and to defend your ideas, with real cases from major companies and preparation for the country's top case competitions. The program helped me a lot, and I also made many friends there. Some of them became my team, and together we took part in a case competition. Huge respect to the organizers: true professionals who really know what they are doing.",
+      linkText: "Our case competition in Projects & cases"
+    }
+  },
   {
     title: "Открытая лекция Дмитрия Кузнецова (Mozi J)",
     date: "8 октября 2026",
