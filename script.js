@@ -1,6 +1,14 @@
-/* Логика сайта. Данные лежат в data.js */
+/* Логика сайта. Данные лежат в data.js, английские тексты в i18n.js */
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+// Язык: сохраняется в браузере, по умолчанию русский
+let lang = "ru";
+try { if (localStorage.getItem("lang") === "en") lang = "en"; } catch (e) {}
+
+// Поле карточки на текущем языке (если перевода нет, берём русский)
+const tr = (item, field) => (lang === "en" && item.en && item.en[field]) || item[field];
+const ui = key => UI[lang][key];
 
 // Контакты
 document.querySelectorAll("[data-contact]").forEach(a => {
@@ -18,67 +26,105 @@ const fill = (id, items, empty, tpl) => {
     : `<p class="empty reveal">${empty}</p>`;
 };
 
-// Мероприятия
-fill("eventCards", events, "Скоро здесь появятся мероприятия.", e => `
-  <article class="card reveal">
-    ${e.photo ? `<img class="card__photo" src="${esc(e.photo)}" alt="${esc(e.title)}" loading="lazy">` : ""}
-    <div class="card__top"><span class="card__date">${esc(e.date)}</span><span class="card__place">${esc(e.place)}</span></div>
-    <h3>${esc(e.title)}</h3>
-    <p>${esc(e.description)}</p>
-  </article>`);
-
-// Проекты и кейс-чемпионаты
 const projectFilters = document.getElementById("projectFilters");
 const projectCards = document.getElementById("projectCards");
+let currentFilter = "Все";
 
-fill("projectCards", projects, "Скоро здесь появятся проекты и кейсы.", p => `
-  <article class="card reveal" data-type="${esc(p.type)}">
-    <div class="card__top"><span class="tag">${esc(p.type)}</span><span class="card__date">${esc(p.status)}</span></div>
-    <h3>${esc(p.title)}</h3>
-    <p class="card__role">${esc(p.role)}</p>
-    <p>${esc(p.description)}</p>
-    ${p.link ? `<a class="card__link" href="${esc(p.link)}" target="_blank" rel="noopener">Открыть</a>` : ""}
-  </article>`);
+const applyFilter = () => {
+  projectFilters.querySelectorAll(".chip").forEach(c => c.classList.toggle("active", c.dataset.filter === currentFilter));
+  projectCards.querySelectorAll(".card").forEach(c =>
+    c.classList.toggle("hide", currentFilter !== "Все" && c.dataset.type !== currentFilter));
+};
+
+function renderData() {
+  // Мероприятия
+  fill("eventCards", events, ui("empty_events"), e => `
+    <article class="card reveal">
+      ${e.photo ? `<img class="card__photo" src="${esc(e.photo)}" alt="${esc(tr(e, "title"))}" loading="lazy">` : ""}
+      <div class="card__top"><span class="card__date">${esc(tr(e, "date"))}</span><span class="card__place">${esc(tr(e, "place"))}</span></div>
+      <h3>${esc(tr(e, "title"))}</h3>
+      <p>${esc(tr(e, "description"))}</p>
+    </article>`);
+
+  // Проекты и кейс-чемпионаты
+  fill("projectCards", projects, ui("empty_projects"), p => `
+    <article class="card reveal" data-type="${esc(p.type)}">
+      <div class="card__top"><span class="tag">${esc(ui(p.type) || p.type)}</span><span class="card__date">${esc(tr(p, "status"))}</span></div>
+      <h3>${esc(tr(p, "title"))}</h3>
+      <p class="card__role">${esc(tr(p, "role"))}</p>
+      <p>${esc(tr(p, "description"))}</p>
+      ${p.link ? `<a class="card__link" href="${esc(p.link)}" target="_blank" rel="noopener">${ui("open")}</a>` : ""}
+    </article>`);
+  applyFilter();
+
+  // Достижения
+  fill("achTimeline", achievements, ui("empty_ach"), a => `
+    <article class="ach reveal${a.photo ? " has-photo" : ""}">
+      <div>
+        <div class="ach__year">${esc(a.year)}</div>
+        <h3>${esc(tr(a, "title"))}</h3>
+        <p>${esc(tr(a, "description"))}</p>
+      </div>
+      ${a.photo ? `<div class="ach__photo"><img src="${esc(a.photo)}" alt="${esc(tr(a, "title"))}" loading="lazy"></div>` : ""}
+    </article>`);
+}
 
 projectFilters.addEventListener("click", ev => {
   const btn = ev.target.closest(".chip");
   if (!btn) return;
-  projectFilters.querySelectorAll(".chip").forEach(c => c.classList.toggle("active", c === btn));
-  const f = btn.dataset.filter;
-  projectCards.querySelectorAll(".card").forEach(c =>
-    c.classList.toggle("hide", f !== "Все" && c.dataset.type !== f));
+  currentFilter = btn.dataset.filter;
+  applyFilter();
 });
 
-// Достижения
-fill("achTimeline", achievements, "Скоро здесь появятся достижения.", a => `
-  <article class="ach reveal${a.photo ? " has-photo" : ""}">
-    <div>
-      <div class="ach__year">${esc(a.year)}</div>
-      <h3>${esc(a.title)}</h3>
-      <p>${esc(a.description)}</p>
-    </div>
-    ${a.photo ? `<div class="ach__photo"><img src="${esc(a.photo)}" alt="${esc(a.title)}" loading="lazy"></div>` : ""}
-  </article>`);
+// Переключение языка
+const RU = {};
+document.querySelectorAll("[data-i18n]").forEach(el => { RU[el.dataset.i18n] = el.innerHTML; });
+const langToggle = document.getElementById("langToggle");
+const navToggleBtn = document.getElementById("navToggle");
+const metaDesc = document.querySelector('meta[name="description"]');
+
+function applyLang(firstRun) {
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.dataset.i18n;
+    el.innerHTML = lang === "en" ? (EN[key] || RU[key]) : RU[key];
+  });
+  document.title = ui("title");
+  metaDesc.setAttribute("content", ui("description"));
+  langToggle.textContent = ui("lang_btn");
+  langToggle.setAttribute("aria-label", ui("lang_label"));
+  navToggleBtn.setAttribute("aria-label", ui("menu"));
+  document.getElementById("toTop").setAttribute("aria-label", ui("to_top"));
+  renderData();
+  // Новые карточки после переключения сразу видимы, при первой загрузке появляются плавно
+  if (firstRun) observeReveal();
+  else document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
+}
+
+langToggle.addEventListener("click", () => {
+  lang = lang === "ru" ? "en" : "ru";
+  try { localStorage.setItem("lang", lang); } catch (e) {}
+  applyLang(false);
+});
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
 // Меню
 const nav = document.getElementById("nav");
-const toggle = document.getElementById("navToggle");
 const links = document.getElementById("navLinks");
 const navAnchors = [...links.querySelectorAll("a")];
-
 const toTop = document.getElementById("toTop");
+
 addEventListener("scroll", () => {
   nav.classList.toggle("scrolled", scrollY > 10);
   toTop.classList.toggle("show", scrollY > 600);
 }, { passive: true });
-toggle.addEventListener("click", () => {
+navToggleBtn.addEventListener("click", () => {
   const open = links.classList.toggle("open");
-  toggle.setAttribute("aria-expanded", open);
+  navToggleBtn.setAttribute("aria-expanded", open);
 });
 links.addEventListener("click", e => {
-  if (e.target.tagName === "A") { links.classList.remove("open"); toggle.setAttribute("aria-expanded", false); }
+  if (e.target.tagName === "A") { links.classList.remove("open"); navToggleBtn.setAttribute("aria-expanded", false); }
 });
 
 // Подсветка текущего раздела
@@ -94,12 +140,16 @@ addEventListener("scroll", () => {
 }, { passive: true });
 
 // Появление блоков
-const io = new IntersectionObserver((entries, obs) => {
-  entries.forEach(en => {
-    if (en.isIntersecting) { en.target.classList.add("visible"); obs.unobserve(en.target); }
+function observeReveal() {
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) { en.target.classList.add("visible"); obs.unobserve(en.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach((el, i) => {
+    el.style.transitionDelay = (i % 3) * 80 + "ms";
+    io.observe(el);
   });
-}, { threshold: 0.12 });
-document.querySelectorAll(".reveal").forEach((el, i) => {
-  el.style.transitionDelay = (i % 3) * 80 + "ms";
-  io.observe(el);
-});
+}
+
+applyLang(true);

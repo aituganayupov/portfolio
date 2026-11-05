@@ -19,17 +19,22 @@
 </head>
 <body>
 
+<!-- Тексты с атрибутом data-i18n переводятся на английский. Переводы лежат в i18n.js -->
+
 <header class="nav" id="nav">
   <div class="container nav__inner">
     <a href="#top" class="nav__logo">А.А.</a>
-    <button class="nav__toggle" id="navToggle" aria-label="Меню" aria-expanded="false"><span></span><span></span></button>
     <nav class="nav__links" id="navLinks">
-      <a href="#about">О себе</a>
-      <a href="#events">Мероприятия</a>
-      <a href="#projects">Проекты и кейсы</a>
-      <a href="#achievements">Достижения</a>
-      <a href="#contacts">Контакты</a>
+      <a href="#about" data-i18n="nav_about">О себе</a>
+      <a href="#events" data-i18n="nav_events">Мероприятия</a>
+      <a href="#projects" data-i18n="nav_projects">Проекты и кейсы</a>
+      <a href="#achievements" data-i18n="nav_ach">Достижения</a>
+      <a href="#contacts" data-i18n="nav_contacts">Контакты</a>
     </nav>
+    <div class="nav__actions">
+      <button class="lang" id="langToggle" aria-label="Switch to English">EN</button>
+      <button class="nav__toggle" id="navToggle" aria-label="Меню" aria-expanded="false"><span></span><span></span></button>
+    </div>
   </div>
 </header>
 
@@ -39,14 +44,14 @@
   <section class="hero">
     <div class="container hero__inner">
       <div class="hero__text reveal">
-        <p class="eyebrow">Портфолио</p>
-        <h1>Аюпов<br>Айтуган</h1>
-        <p class="hero__lead">Студент ВШЭ, аналитика в экономике, спортсмен.</p>
+        <p class="eyebrow" data-i18n="hero_eyebrow">Портфолио</p>
+        <h1 data-i18n="hero_name">Аюпов<br>Айтуган</h1>
+        <p class="hero__lead" data-i18n="hero_lead">Студент ВШЭ, аналитика в экономике, спортсмен.</p>
         <div class="hero__links">
           <a class="btn" data-contact="telegram" target="_blank" rel="noopener">Telegram</a>
-          <a class="btn" data-contact="email">Почта</a>
+          <a class="btn" data-contact="email" data-i18n="btn_email">Почта</a>
           <a class="btn" data-contact="github" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn btn--accent" data-contact="resume" download>Резюме</a>
+          <a class="btn btn--accent" data-contact="resume" download data-i18n="btn_resume">Резюме</a>
         </div>
       </div>
       <div class="hero__photo reveal">
@@ -62,18 +67,18 @@
   <!-- О себе -->
   <section class="section" id="about">
     <div class="container">
-      <p class="eyebrow reveal">01 / О себе</p>
-      <h2 class="reveal">Цифры и татами</h2>
+      <p class="eyebrow reveal" data-i18n="about_eyebrow">01 / О себе</p>
+      <h2 class="reveal" data-i18n="about_title">Цифры и татами</h2>
       <div class="about reveal">
         <div class="about__text">
-          <p>Меня зовут Айтуган, я родился в Уфе. Сейчас учусь на первом курсе НИУ ВШЭ в Санкт-Петербурге, в Санкт-Петербургской школе экономики и менеджмента, на направлении «Аналитика в экономике».</p>
-          <p>Я профессионально занимаюсь тхэквондо: у меня чёрный пояс, звание КМС, я призёр первенства России. Тренировки, соревнования и сборы заняли в моей жизни большое место и научили главному: дисциплине и умению работать на результат, даже когда тяжело.</p>
-          <p>Эти же привычки я переношу в учёбу. Мне нравится разбираться в данных, пробовать себя в проектах и кейс-чемпионатах и ходить на события, где можно узнать что-то новое.</p>
+          <p data-i18n="about_p1">Меня зовут Айтуган, я родился в Уфе. Сейчас учусь на первом курсе НИУ ВШЭ в Санкт-Петербурге, в Санкт-Петербургской школе экономики и менеджмента, на направлении «Аналитика в экономике».</p>
+          <p data-i18n="about_p2">Я профессионально занимаюсь тхэквондо: у меня чёрный пояс, звание КМС, я призёр первенства России. Тренировки, соревнования и сборы заняли в моей жизни большое место и научили главному: дисциплине и умению работать на результат, даже когда тяжело.</p>
+          <p data-i18n="about_p3">Эти же привычки я переношу в учёбу. Мне нравится разбираться в данных, пробовать себя в проектах и кейс-чемпионатах и ходить на события, где можно узнать что-то новое.</p>
         </div>
         <div class="facts">
-          <div class="fact"><span class="fact__num">ВШЭ СПб</span><span class="fact__label">1 курс, «Аналитика в экономике»</span></div>
-          <div class="fact"><span class="fact__num">КМС</span><span class="fact__label">тхэквондо, чёрный пояс</span></div>
-          <div class="fact"><span class="fact__num">Уфа</span><span class="fact__label">родной город</span></div>
+          <div class="fact"><span class="fact__num" data-i18n="fact1_num">ВШЭ СПб</span><span class="fact__label" data-i18n="fact1_label">1 курс, «Аналитика в экономике»</span></div>
+          <div class="fact"><span class="fact__num" data-i18n="fact2_num">КМС</span><span class="fact__label" data-i18n="fact2_label">тхэквондо, чёрный пояс</span></div>
+          <div class="fact"><span class="fact__num" data-i18n="fact3_num">Уфа</span><span class="fact__label" data-i18n="fact3_label">родной город</span></div>
         </div>
       </div>
     </div>
@@ -82,8 +87,8 @@
   <!-- Мероприятия -->
   <section class="section" id="events">
     <div class="container">
-      <p class="eyebrow reveal">02 / Мероприятия</p>
-      <h2 class="reveal">Где я был и что узнал</h2>
+      <p class="eyebrow reveal" data-i18n="events_eyebrow">02 / Мероприятия</p>
+      <h2 class="reveal" data-i18n="events_title">Где я был и что узнал</h2>
       <div class="cards" id="eventCards"></div>
     </div>
   </section>
@@ -91,12 +96,12 @@
   <!-- Проекты и кейс-чемпионаты -->
   <section class="section" id="projects">
     <div class="container">
-      <p class="eyebrow reveal">03 / Проекты и кейсы</p>
-      <h2 class="reveal">Проекты и кейс-чемпионаты</h2>
+      <p class="eyebrow reveal" data-i18n="projects_eyebrow">03 / Проекты и кейсы</p>
+      <h2 class="reveal" data-i18n="projects_title">Проекты и кейс-чемпионаты</h2>
       <div class="filters reveal" id="projectFilters">
-        <button class="chip active" data-filter="Все">Все</button>
-        <button class="chip" data-filter="Проект">Проекты</button>
-        <button class="chip" data-filter="Кейс-чемпионат">Кейс-чемпионаты</button>
+        <button class="chip active" data-filter="Все" data-i18n="filter_all">Все</button>
+        <button class="chip" data-filter="Проект" data-i18n="filter_projects">Проекты</button>
+        <button class="chip" data-filter="Кейс-чемпионат" data-i18n="filter_cases">Кейс-чемпионаты</button>
       </div>
       <div class="cards" id="projectCards"></div>
     </div>
@@ -105,8 +110,8 @@
   <!-- Достижения -->
   <section class="section" id="achievements">
     <div class="container">
-      <p class="eyebrow reveal">04 / Достижения</p>
-      <h2 class="reveal">Достижения</h2>
+      <p class="eyebrow reveal" data-i18n="ach_eyebrow">04 / Достижения</p>
+      <h2 class="reveal" data-i18n="ach_title">Достижения</h2>
       <div class="timeline" id="achTimeline"></div>
     </div>
   </section>
@@ -116,20 +121,21 @@
 <!-- Контакты -->
 <footer class="footer" id="contacts">
   <div class="container">
-    <p class="eyebrow reveal">05 / Контакты</p>
-    <h2 class="reveal">Давайте на связи</h2>
+    <p class="eyebrow reveal" data-i18n="contacts_eyebrow">05 / Контакты</p>
+    <h2 class="reveal" data-i18n="contacts_title">Давайте на связи</h2>
     <div class="footer__links reveal">
       <a data-contact="telegram" target="_blank" rel="noopener">Telegram</a>
       <a data-contact="email" data-show-text>Почта</a>
       <a data-contact="github" target="_blank" rel="noopener">GitHub</a>
     </div>
-    <p class="footer__copy">© <span id="year"></span> Аюпов Айтуган</p>
+    <p class="footer__copy">© <span id="year"></span> <span data-i18n="footer_name">Аюпов Айтуган</span></p>
   </div>
 </footer>
 
 <a href="#top" class="to-top" id="toTop" aria-label="Наверх">↑</a>
 
 <script src="data.js"></script>
+<script src="i18n.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
