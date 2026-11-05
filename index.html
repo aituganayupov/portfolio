@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Аюпов Айтуган — портфолио</title>
+  <meta name="description" content="Портфолио Аюпова Айтугана: студент НИУ ВШЭ, аналитика в экономике, тхэквондо.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="#top" class="nav__logo">А.А.</a>
+    <button class="nav__toggle" id="navToggle" aria-label="Меню" aria-expanded="false"><span></span><span></span></button>
+    <nav class="nav__links" id="navLinks">
+      <a href="#about">О себе</a>
+      <a href="#events">Мероприятия</a>
+      <a href="#achievements">Достижения</a>
+      <a href="#sport">Спорт</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__text reveal">
+        <p class="eyebrow">Портфолио</p>
+        <h1>Аюпов<br>Айтуган</h1>
+        <p class="hero__lead">Студент ВШЭ, аналитика в экономике, спортсмен.</p>
+        <div class="hero__links">
+          <a class="btn" href="https://t.me/your_username" target="_blank" rel="noopener">Telegram</a>
+          <a class="btn" href="mailto:your@email.com">Почта</a>
+          <a class="btn" href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <div class="hero__photo reveal">
+        <div class="photo-frame">
+          <span class="photo-frame__ph">АА</span>
+          <!-- Положите своё фото в assets/photo.jpg -->
+          <img src="assets/photo.jpg" alt="Аюпов Айтуган" onerror="this.remove()">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <p class="eyebrow reveal">01 — О себе</p>
+      <h2 class="reveal">Спорт и аналитика — про дисциплину и результат</h2>
+      <div class="about reveal">
+        <div class="about__text">
+          <p>Меня зовут Айтуган, я родился в Уфе, а сейчас учусь на первом курсе НИУ ВШЭ в Санкт-Петербурге — в Санкт-Петербургской школе экономики и менеджмента, на направлении «Аналитика в экономике».</p>
+          <p>Профессионально занимаюсь тхэквондо: у меня чёрный пояс, звание КМС и призовое место на первенстве России. Спорт научил меня работать на результат, выдерживать нагрузку и не сдаваться, когда сложно.</p>
+          <p>Ещё я волонтёр: набрал 264 верифицированных часа. Мне нравится быть полезным и участвовать в событиях, которые делают людей сильнее и ближе друг к другу.</p>
+        </div>
+        <div class="facts">
+          <div class="fact"><span class="fact__num">ВШЭ</span><span class="fact__label">Санкт-Петербург, 1 курс</span></div>
+          <div class="fact"><span class="fact__num">КМС</span><span class="fact__label">тхэквондо, чёрный пояс</span></div>
+          <div class="fact"><span class="fact__num">264</span><span class="fact__label">часа волонтёрства</span></div>
+          <div class="fact"><span class="fact__num">Уфа</span><span class="fact__label">родной город</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section class="section" id="events">
+    <div class="container">
+      <p class="eyebrow reveal">02 — Мои мероприятия</p>
+      <h2 class="reveal">Мероприятия, кейсы и проекты</h2>
+      <div class="filters reveal" id="eventFilters"></div>
+      <div class="cards" id="eventCards"></div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section class="section" id="achievements">
+    <div class="container">
+      <p class="eyebrow reveal">03 — Мои достижения</p>
+      <h2 class="reveal">Достижения</h2>
+      <div class="timeline" id="achTimeline"></div>
+    </div>
+  </section>
+
+  <!-- SPORT -->
+  <section class="section" id="sport">
+    <div class="container">
+      <p class="eyebrow reveal">04 — Спорт</p>
+      <h2 class="reveal">Тхэквондо</h2>
+      <div class="sport">
+        <div class="sport__text reveal">
+          <p>Тхэквондо — большая часть моей жизни. Тренировки, соревнования и сборы научили меня собранности, уважению к сопернику и умению держать удар — в прямом и переносном смысле.</p>
+          <p>КМС, чёрный пояс, призёр первенства России. Здесь можно рассказать о тренере, клубе, любимых приёмах и ближайших стартах.</p>
+        </div>
+        <div class="sport__media reveal">
+          <div class="video" id="sportVideo">
+            <!-- Замените на свой ролик: положите assets/video.mp4 или вставьте iframe YouTube -->
+            <video controls preload="none" poster="" onerror="this.parentElement.classList.add('is-empty')">
+              <source src="assets/video.mp4" type="video/mp4">
+            </video>
+            <span class="video__ph">Здесь будет видео</span>
+          </div>
+          <div class="gallery" id="sportGallery"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer" id="contacts">
+  <div class="container">
+    <h2 class="reveal">Давайте на связи</h2>
+    <div class="footer__links reveal">
+      <a href="https://t.me/your_username" target="_blank" rel="noopener">Telegram</a>
+      <a href="mailto:your@email.com">your@email.com</a>
+      <a href="https://github.com/your-username" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <p class="footer__copy">© <span id="year"></span> Аюпов Айтуган</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
