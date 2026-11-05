@@ -1,130 +1,66 @@
-/* ============================================================
-   ДАННЫЕ — редактируйте только эти массивы, вёрстку трогать не нужно
-   ============================================================ */
-
-// Мероприятия, кейсы и проекты.
-// tag — любой текст; фильтры строятся автоматически из тегов.
-const events = [
-  {
-    title: "Название кейс-чемпионата",
-    date: "Октябрь 2026",
-    tag: "Кейс-чемпионат",
-    description: "Короткое описание: задача, роль в команде, результат."
-  },
-  {
-    title: "Название волонтёрского мероприятия",
-    date: "Сентябрь 2026",
-    tag: "Волонтёрство",
-    description: "Чем занимался, сколько часов, чему научился."
-  },
-  {
-    title: "Название проекта",
-    date: "Ноябрь 2026",
-    tag: "Проект",
-    description: "Что сделал, какие инструменты использовал, ссылка на результат."
-  }
-];
-
-// Достижения. photo — путь к картинке, например "assets/kms.jpg" (пусто = заглушка).
-const achievements = [
-  {
-    year: "20XX",
-    title: "Звание КМС по тхэквондо",
-    description: "Кандидат в мастера спорта.",
-    photo: ""
-  },
-  {
-    year: "20XX",
-    title: "Чёрный пояс по тхэквондо",
-    description: "Сдан экзамен на чёрный пояс.",
-    photo: ""
-  },
-  {
-    year: "20XX",
-    title: "Призёр первенства России",
-    description: "Укажите возрастную группу, весовую категорию и место.",
-    photo: ""
-  },
-  {
-    year: "20XX",
-    title: "Сборная России",
-    description: "Укажите, в каком качестве и в какие годы (уточните формулировку).",
-    photo: ""
-  },
-  {
-    year: "2026",
-    title: "264 часа волонтёрства",
-    description: "Верифицированные волонтёрские часы.",
-    photo: ""
-  },
-  {
-    year: "2026",
-    title: "Поступление в НИУ ВШЭ",
-    description: "Санкт-Петербургская школа экономики и менеджмента, «Аналитика в экономике».",
-    photo: ""
-  }
-];
-
-// Фото для блока «Спорт» (пустой массив = 3 заглушки).
-const sportPhotos = [
-  // "assets/sport1.jpg",
-  // "assets/sport2.jpg",
-  // "assets/sport3.jpg"
-];
-
-/* ============================================================
-   ЛОГИКА
-   ============================================================ */
+/* Логика сайта. Данные лежат в data.js */
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
-// --- Мероприятия + фильтры ---
-const filtersEl = document.getElementById("eventFilters");
-const cardsEl = document.getElementById("eventCards");
+// Контакты
+document.querySelectorAll("[data-contact]").forEach(a => {
+  const key = a.dataset.contact;
+  const value = CONTACTS[key];
+  if (!value) return;
+  a.href = key === "email" ? "mailto:" + value : value;
+  if (a.hasAttribute("data-show-text") && key === "email") a.textContent = value;
+});
 
-cardsEl.innerHTML = events.map(e => `
-  <article class="card reveal" data-tag="${esc(e.tag)}">
-    <div class="card__top"><span class="card__date">${esc(e.date)}</span><span class="tag">${esc(e.tag)}</span></div>
+// Мероприятия
+document.getElementById("eventCards").innerHTML = events.map(e => `
+  <article class="card reveal">
+    ${e.photo ? `<img class="card__photo" src="${esc(e.photo)}" alt="${esc(e.title)}" loading="lazy">` : ""}
+    <div class="card__top"><span class="card__date">${esc(e.date)}</span><span class="card__place">${esc(e.place)}</span></div>
     <h3>${esc(e.title)}</h3>
     <p>${esc(e.description)}</p>
   </article>`).join("");
 
-const tags = ["Все", ...new Set(events.map(e => e.tag))];
-filtersEl.innerHTML = tags.map((t, i) =>
-  `<button class="chip${i === 0 ? " active" : ""}" data-filter="${esc(t)}">${esc(t)}</button>`).join("");
+// Проекты и кейс-чемпионаты
+const projectFilters = document.getElementById("projectFilters");
+const projectCards = document.getElementById("projectCards");
 
-filtersEl.addEventListener("click", ev => {
+projectCards.innerHTML = projects.map(p => `
+  <article class="card reveal" data-type="${esc(p.type)}">
+    <div class="card__top"><span class="tag">${esc(p.type)}</span><span class="card__date">${esc(p.status)}</span></div>
+    <h3>${esc(p.title)}</h3>
+    <p class="card__role">${esc(p.role)}</p>
+    <p>${esc(p.description)}</p>
+    ${p.link ? `<a class="card__link" href="${esc(p.link)}" target="_blank" rel="noopener">Открыть</a>` : ""}
+  </article>`).join("");
+
+projectFilters.addEventListener("click", ev => {
   const btn = ev.target.closest(".chip");
   if (!btn) return;
-  filtersEl.querySelectorAll(".chip").forEach(c => c.classList.toggle("active", c === btn));
+  projectFilters.querySelectorAll(".chip").forEach(c => c.classList.toggle("active", c === btn));
   const f = btn.dataset.filter;
-  cardsEl.querySelectorAll(".card").forEach(c =>
-    c.classList.toggle("hide", f !== "Все" && c.dataset.tag !== f));
+  projectCards.querySelectorAll(".card").forEach(c =>
+    c.classList.toggle("hide", f !== "Все" && c.dataset.type !== f));
 });
 
-// --- Достижения ---
+// Достижения
 document.getElementById("achTimeline").innerHTML = achievements.map(a => `
-  <article class="ach reveal">
+  <article class="ach reveal${a.photo ? " has-photo" : ""}">
     <div>
       <div class="ach__year">${esc(a.year)}</div>
       <h3>${esc(a.title)}</h3>
       <p>${esc(a.description)}</p>
     </div>
-    <div class="ach__photo">${a.photo ? `<img src="${esc(a.photo)}" alt="${esc(a.title)}" loading="lazy">` : "Фото грамоты / медали"}</div>
+    ${a.photo ? `<div class="ach__photo"><img src="${esc(a.photo)}" alt="${esc(a.title)}" loading="lazy"></div>` : ""}
   </article>`).join("");
 
-// --- Галерея спорта ---
-const gallery = document.getElementById("sportGallery");
-const slots = sportPhotos.length ? sportPhotos : [null, null, null];
-gallery.innerHTML = slots.map(p =>
-  `<div class="gallery__item">${p ? `<img src="${esc(p)}" alt="Тхэквондо" loading="lazy">` : "Фото"}</div>`).join("");
-
-// --- Прочее ---
 document.getElementById("year").textContent = new Date().getFullYear();
 
+// Меню
 const nav = document.getElementById("nav");
 const toggle = document.getElementById("navToggle");
 const links = document.getElementById("navLinks");
+const navAnchors = [...links.querySelectorAll("a")];
+
 addEventListener("scroll", () => nav.classList.toggle("scrolled", scrollY > 10), { passive: true });
 toggle.addEventListener("click", () => {
   const open = links.classList.toggle("open");
@@ -134,18 +70,19 @@ links.addEventListener("click", e => {
   if (e.target.tagName === "A") { links.classList.remove("open"); toggle.setAttribute("aria-expanded", false); }
 });
 
-// Подсветка текущего раздела в меню
-const sections = [...document.querySelectorAll("main section[id]")];
-const navAnchors = [...links.querySelectorAll("a")];
+// Подсветка текущего раздела
+const setActive = id => navAnchors.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + id));
+const sections = [...document.querySelectorAll("section[id], footer[id]")];
 const spy = new IntersectionObserver(entries => {
-  entries.forEach(en => {
-    if (en.isIntersecting)
-      navAnchors.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + en.target.id));
-  });
+  entries.forEach(en => { if (en.isIntersecting) setActive(en.target.id); });
 }, { rootMargin: "-45% 0px -50% 0px" });
 sections.forEach(s => spy.observe(s));
+// Контакты внизу страницы могут не дойти до середины экрана
+addEventListener("scroll", () => {
+  if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) setActive("contacts");
+}, { passive: true });
 
-// Плавное появление блоков
+// Появление блоков
 const io = new IntersectionObserver((entries, obs) => {
   entries.forEach(en => {
     if (en.isIntersecting) { en.target.classList.add("visible"); obs.unobserve(en.target); }
