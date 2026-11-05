@@ -103,17 +103,18 @@ const projects = [
     }
   },
   {
-    title: "Название кейс-чемпионата (заглушка, замените)",
+    title: "CUP MOSCOW: кейс ВТБ «Система противодействия мошенничеству»",
     type: "Кейс-чемпионат",
-    role: "Участник команды",
-    status: "Результат или место",
-    description: "Какую задачу решали и что предложили.",
+    role: "Аналитик, финансист, команда Case Cracken",
+    status: "Ждём результатов",
+    description: "Вместе с командой Case Cracken мы приняли участие в CUP MOSCOW, одном из самых популярных кейс-чемпионатов страны. Решали кейс от банка ВТБ: как построить систему противодействия мошенничеству, чтобы деньги клиентов были под защитой. Сейчас ждём результатов, но на этом участие в кейс-чемпионатах не заканчивается. Это только начало.",
     link: "",
+    photos: ["assets/projects/cupmoscow-1.png", "assets/projects/cupmoscow-2.webp"],
     en: {
-      title: "Case competition name (placeholder)",
-      role: "Team member",
-      status: "Result or place",
-      description: "What problem we solved and what we proposed."
+      title: "CUP MOSCOW: VTB case \"Anti-fraud system\"",
+      role: "Analyst, finance, team Case Cracken",
+      status: "Awaiting results",
+      description: "Together with my team Case Cracken I took part in CUP MOSCOW, one of the most popular case competitions in Russia. We worked on a case from VTB Bank: how to build an anti-fraud system that keeps customers' money safe. We're waiting for the results now, but this is not the end of my case competition journey. It's only the beginning."
     }
   },
 ];
