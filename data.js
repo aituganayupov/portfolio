@@ -20,42 +20,16 @@ const CONTACTS = {
 // photo - необязательное поле, путь к картинке, например "assets/forum.jpg".
 const events = [
   {
-    title: "Название мероприятия (заглушка, замените)",
-    date: "Октябрь 2026",
-    place: "Санкт-Петербург",
-    description: "Что это было и что я оттуда вынес. Замените этот текст на свой.",
-    photo: "",
+    title: "Открытая лекция Дмитрия Кузнецова (Mozi J)",
+    date: "8 октября 2026",
+    place: "ВШЭ x Бизнес-клуб, Санкт-Петербург",
+    description: "Дмитрий - основатель ювелирного бренда Mozi Jewelry, его украшения носят Тимати, OG Buda, Егор Крид, Слава Мэрлоу, kizaru, OBLADAET и другие рэп-исполнители. Он рассказал, как прошёл путь от 50 тысяч рублей до сильного бренда с крупными клиентами, как выстраивает отношения с артистами от первого контакта до коллабораций и как устроен бизнес изнутри: производство, ценообразование, работа с медийными клиентами.",
+    photo: "assets/events/mozi-1.jpg",
     en: {
-      title: "Event name (placeholder)",
-      date: "October 2026",
-      place: "St. Petersburg",
-      description: "What it was and what I took away from it."
-    }
-  },
-  {
-    title: "Ещё одно мероприятие (заглушка, замените)",
-    date: "Сентябрь 2026",
-    place: "Город или онлайн",
-    description: "Одна-две строки: тема, с кем общался, что понравилось.",
-    photo: "",
-    en: {
-      title: "Another event (placeholder)",
-      date: "September 2026",
-      place: "City or online",
-      description: "A line or two: the topic, who I met, what I liked."
-    }
-  },
-  {
-    title: "Третье мероприятие (заглушка, замените)",
-    date: "Ноябрь 2026",
-    place: "Город или онлайн",
-    description: "Форум, лекция, встреча или хакатон. Допишите детали.",
-    photo: "",
-    en: {
-      title: "Third event (placeholder)",
-      date: "November 2026",
-      place: "City or online",
-      description: "A forum, lecture, meetup or hackathon."
+      title: "Open lecture by Dmitry Kuznetsov (Mozi J)",
+      date: "October 8, 2026",
+      place: "HSE x Business Club, St. Petersburg",
+      description: "Dmitry is the founder of the jewelry brand Mozi Jewelry, worn by Timati, OG Buda, Egor Kreed, Slava Marlow, kizaru, OBLADAET and other Russian rap artists. He shared how he grew the business from 50,000 rubles into a strong brand with major clients, how he builds relationships with artists from the first contact to collaborations, and how the business works from the inside: production, pricing and working with media clients."
     }
   }
 ];
