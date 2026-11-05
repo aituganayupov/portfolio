@@ -36,15 +36,56 @@ const applyFilter = () => {
     c.classList.toggle("hide", currentFilter !== "Все" && c.dataset.type !== currentFilter));
 };
 
+// Фото в карточке: одно или листалка из нескольких
+const slider = (photos, alt) => {
+  if (!photos.length) return "";
+  const imgs = photos.map((src, i) =>
+    `<img class="${i === 0 ? "on" : ""}" src="${esc(src)}" alt="${esc(alt)}" loading="lazy">`).join("");
+  if (photos.length === 1) return `<div class="card__photo">${imgs}</div>`;
+  const dots = photos.map((_, i) => `<span class="${i === 0 ? "on" : ""}"></span>`).join("");
+  return `<div class="card__photo slider" data-i="0">${imgs}
+    <button class="slider__btn prev" aria-label="←">‹</button>
+    <button class="slider__btn next" aria-label="→">›</button>
+    <div class="slider__dots">${dots}</div></div>`;
+};
+
+const slide = (s, step) => {
+  const imgs = s.querySelectorAll("img"), dots = s.querySelectorAll(".slider__dots span");
+  const i = (+s.dataset.i + step + imgs.length) % imgs.length;
+  s.dataset.i = i;
+  imgs.forEach((im, k) => im.classList.toggle("on", k === i));
+  dots.forEach((d, k) => d.classList.toggle("on", k === i));
+};
+
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".slider__btn");
+  if (btn) slide(btn.closest(".slider"), btn.classList.contains("next") ? 1 : -1);
+});
+// Свайп на телефоне
+let touchX = null;
+document.addEventListener("touchstart", e => { if (e.target.closest(".slider")) touchX = e.touches[0].clientX; }, { passive: true });
+document.addEventListener("touchend", e => {
+  const s = e.target.closest(".slider");
+  if (!s || touchX === null) return;
+  const dx = e.changedTouches[0].clientX - touchX;
+  if (Math.abs(dx) > 40) slide(s, dx < 0 ? 1 : -1);
+  touchX = null;
+});
+
 function renderData() {
   // Мероприятия
-  fill("eventCards", events, ui("empty_events"), e => `
-    <article class="card reveal">
-      ${e.photo ? `<img class="card__photo" src="${esc(e.photo)}" alt="${esc(tr(e, "title"))}" loading="lazy">` : ""}
-      <div class="card__top"><span class="card__date">${esc(tr(e, "date"))}</span><span class="card__place">${esc(tr(e, "place"))}</span></div>
-      <h3>${esc(tr(e, "title"))}</h3>
-      <p>${esc(tr(e, "description"))}</p>
-    </article>`);
+  fill("eventCards", events, ui("empty_events"), e => {
+    const photos = e.photos || (e.photo ? [e.photo] : []);
+    return `
+    <article class="card reveal${photos.length ? " card--media" : ""}">
+      ${slider(photos, tr(e, "title"))}
+      <div class="card__body">
+        <div class="card__top"><span class="card__date">${esc(tr(e, "date"))}</span><span class="card__place">${esc(tr(e, "place"))}</span></div>
+        <h3>${esc(tr(e, "title"))}</h3>
+        <p>${esc(tr(e, "description"))}</p>
+      </div>
+    </article>`;
+  });
 
   // Проекты и кейс-чемпионаты
   fill("projectCards", projects, ui("empty_projects"), p => `
