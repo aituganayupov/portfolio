@@ -83,20 +83,23 @@ const events = [
 
 // 3. Проекты и кейс-чемпионаты.
 // type: "Проект" или "Кейс-чемпионат" (от этого работает фильтр, на английский тип переводится сам).
-// link - необязательное поле, ссылка на результат.
+// link и linkText - необязательная ссылка и её подпись. photos - необязательный список фото.
 const projects = [
   {
-    title: "Название проекта (заглушка, замените)",
+    title: "Инкубатор КОЛЛАБ 2к26 от ВкусВилл: мармелад с креатином",
     type: "Проект",
-    role: "Моя роль",
-    status: "В процессе",
-    description: "Коротко: что за проект, какие инструменты использовал.",
-    link: "",
+    role: "Аналитик, команда НИУ ВШЭ x ИТМО",
+    status: "Топ-5, продукт в разработке",
+    description: "Это как стартап-инкубатор, только для еды: полный путь создания инновационного продукта питания от идеи до прототипа. Мы делаем жевательный мармелад с креатином в разовых пакетиках. Берёшь, ешь и всё: без шейкера, без порошка и без противного вкуса. В отбор прошли только 5 команд со всей страны и СНГ, и наша команда в их числе. Сейчас мы на этапе производства, продукт в разработке, так что ждите новостей.",
+    link: "https://t.me/logos_marmelad_creatin_hseitmo",
+    linkText: "Наш Telegram-канал о проекте",
+    photos: ["assets/projects/vkusvill-2.png", "assets/projects/vkusvill-1.webp"],
     en: {
-      title: "Project name (placeholder)",
-      role: "My role",
-      status: "In progress",
-      description: "In short: what the project is and which tools I used."
+      title: "VkusVill COLLAB 2k26 Incubator: creatine gummies",
+      role: "Analyst, HSE x ITMO team",
+      status: "Top 5, in development",
+      description: "It's like a startup incubator, but for food: the full journey of creating an innovative food product from idea to prototype. We're making chewable creatine gummies in single-serve packs. Just grab and eat: no shaker, no powder and no nasty taste. Only 5 teams from across Russia and the CIS were selected, and our team is one of them. We're now at the production stage and the product is in development, so stay tuned.",
+      linkText: "Our Telegram channel about the project"
     }
   },
   {
@@ -113,20 +116,6 @@ const projects = [
       description: "What problem we solved and what we proposed."
     }
   },
-  {
-    title: "Ещё один проект (заглушка, замените)",
-    type: "Проект",
-    role: "Автор",
-    status: "Завершён",
-    description: "Что сделал и чему научился.",
-    link: "",
-    en: {
-      title: "Another project (placeholder)",
-      role: "Author",
-      status: "Completed",
-      description: "What I built and what I learned."
-    }
-  }
 ];
 
 // 4. Достижения: спортивные и учебные.

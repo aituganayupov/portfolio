@@ -136,11 +136,12 @@ function renderData() {
   // Проекты и кейс-чемпионаты
   fill("projectCards", projects, ui("empty_projects"), p => `
     <article class="card reveal" data-type="${esc(p.type)}">
+      ${slider(p.photos || [], tr(p, "title"))}
       <div class="card__top"><span class="tag">${esc(ui(p.type) || p.type)}</span><span class="card__date">${esc(tr(p, "status"))}</span></div>
       <h3>${esc(tr(p, "title"))}</h3>
       <p class="card__role">${esc(tr(p, "role"))}</p>
       <p>${esc(tr(p, "description"))}</p>
-      ${p.link ? `<a class="card__link" href="${esc(p.link)}" target="_blank" rel="noopener">${ui("open")}</a>` : ""}
+      ${p.link ? `<a class="card__link" href="${esc(p.link)}" target="_blank" rel="noopener">${esc(tr(p, "linkText") || ui("open"))} →</a>` : ""}
     </article>`);
   applyFilter();
 
