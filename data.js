@@ -7,7 +7,10 @@
 const CONTACTS = {
   telegram: "https://t.me/your_username",
   email: "your@email.com",
-  github: "https://github.com/your-username"
+  github: "https://github.com/your-username",
+  // Резюме: положите PDF в assets и впишите путь, например "assets/resume.pdf".
+  // Пока пусто, кнопка «Резюме» скрыта.
+  resume: ""
 };
 
 // 2. Мероприятия: где я был и в чём участвовал.

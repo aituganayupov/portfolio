@@ -52,7 +52,13 @@ h1 { font-size: clamp(52px, 9vw, 112px); line-height: 1; letter-spacing: -.035em
 h2 { font-size: clamp(30px, 4.6vw, 56px); line-height: 1.12; letter-spacing: -.025em; font-weight: 600; max-width: 18ch; margin-bottom: 56px; }
 
 /* Шапка */
-.hero { min-height: calc(100vh - 64px); display: flex; align-items: center; padding: 48px 0; }
+.hero { min-height: calc(100vh - 64px); display: flex; align-items: center; padding: 48px 0; position: relative; overflow: hidden; }
+.hero::before {
+  content: ''; position: absolute; width: 760px; height: 760px; right: -220px; top: -240px;
+  background: radial-gradient(circle, rgba(143, 184, 168, .13), transparent 62%);
+  pointer-events: none;
+}
+.hero__inner { position: relative; }
 .hero__inner { display: grid; grid-template-columns: 1.3fr 1fr; gap: 56px; align-items: center; }
 .hero__lead { font-size: clamp(18px, 2vw, 24px); color: var(--muted); margin: 28px 0 36px; max-width: 28ch; }
 .hero__links { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -61,6 +67,9 @@ h2 { font-size: clamp(30px, 4.6vw, 56px); line-height: 1.12; letter-spacing: -.0
   font-size: 15px; font-weight: 500; transition: .25s;
 }
 .btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); transform: translateY(-2px); }
+.btn--accent { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.btn--accent:hover { background: transparent; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .photo-frame {
   position: relative; aspect-ratio: 4 / 5; border-radius: 28px; overflow: hidden;
   background: linear-gradient(160deg, #1a1d22, #101216);
@@ -133,6 +142,19 @@ h2 { font-size: clamp(30px, 4.6vw, 56px); line-height: 1.12; letter-spacing: -.0
 .footer__links a { color: var(--muted); transition: color .2s; overflow-wrap: anywhere; }
 .footer__links a:hover { color: var(--accent); }
 .footer__copy { margin-top: 80px; color: #5c616a; font-size: 14px; }
+
+/* Пустой раздел */
+.empty { color: var(--muted); font-size: 16px; }
+
+/* Кнопка наверх */
+.to-top {
+  position: fixed; right: 20px; bottom: 20px; z-index: 40;
+  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--bg-2); border: 1px solid var(--line); color: var(--accent); font-size: 18px;
+  opacity: 0; pointer-events: none; transform: translateY(10px); transition: .3s;
+}
+.to-top.show { opacity: 1; pointer-events: auto; transform: none; }
+.to-top:hover { border-color: var(--accent); }
 
 /* Появление блоков */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
