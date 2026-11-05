@@ -8,9 +8,9 @@
 
 // 1. Контакты. Работают и в шапке, и в блоке «Контакты».
 const CONTACTS = {
-  telegram: "https://t.me/your_username",
-  email: "your@email.com",
-  github: "https://github.com/your-username",
+  telegram: "https://t.me/a3a9t",
+  email: "ataiupov@edu.hse.ru",
+  github: "", // пусто = кнопка GitHub скрыта
   // Резюме: положите PDF в assets и впишите путь, например "assets/resume.pdf".
   // Пока пусто, кнопка «Резюме» скрыта.
   resume: ""
@@ -98,7 +98,7 @@ const projects = [
     role: "Автор",
     status: "Завершён",
     description: "Что сделал и чему научился.",
-    link: "https://github.com/your-username",
+    link: "",
     en: {
       title: "Another project (placeholder)",
       role: "Author",
