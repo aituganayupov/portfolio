@@ -57,19 +57,64 @@ const slide = (s, step) => {
   dots.forEach((d, k) => d.classList.toggle("on", k === i));
 };
 
+// Просмотр фото на весь экран
+const lb = document.createElement("div");
+lb.className = "lightbox";
+lb.innerHTML = `<img alt=""><button class="lb__close" aria-label="×">×</button>
+  <button class="lb__btn prev" aria-label="←">‹</button><button class="lb__btn next" aria-label="→">›</button>
+  <div class="lb__count"></div>`;
+document.body.appendChild(lb);
+const lbImg = lb.querySelector("img");
+let lbList = [], lbIndex = 0;
+
+const lbShow = () => {
+  lbImg.src = lbList[lbIndex];
+  const many = lbList.length > 1;
+  lb.querySelectorAll(".lb__btn").forEach(b => b.hidden = !many);
+  lb.querySelector(".lb__count").textContent = many ? `${lbIndex + 1} / ${lbList.length}` : "";
+};
+const lbOpen = (list, i) => {
+  lbList = list; lbIndex = i; lbShow();
+  lb.classList.add("open");
+  document.body.style.overflow = "hidden";
+};
+const lbClose = () => { lb.classList.remove("open"); document.body.style.overflow = ""; };
+const lbStep = step => { lbIndex = (lbIndex + step + lbList.length) % lbList.length; lbShow(); };
+
+addEventListener("keydown", e => {
+  if (!lb.classList.contains("open")) return;
+  if (e.key === "Escape") lbClose();
+  if (e.key === "ArrowRight") lbStep(1);
+  if (e.key === "ArrowLeft") lbStep(-1);
+});
+
 document.addEventListener("click", e => {
   const btn = e.target.closest(".slider__btn");
-  if (btn) slide(btn.closest(".slider"), btn.classList.contains("next") ? 1 : -1);
+  if (btn) return slide(btn.closest(".slider"), btn.classList.contains("next") ? 1 : -1);
+
+  const lbBtn = e.target.closest(".lb__btn");
+  if (lbBtn) return lbStep(lbBtn.classList.contains("next") ? 1 : -1);
+  if (lb.classList.contains("open") && e.target !== lbImg) return lbClose();
+
+  // Клик по фото в карточке или в достижениях
+  const box = e.target.tagName === "IMG" && e.target.closest(".card__photo, .ach__photo");
+  if (box) {
+    const imgs = [...box.querySelectorAll("img")];
+    lbOpen(imgs.map(im => im.getAttribute("src")), imgs.indexOf(e.target));
+  }
 });
-// Свайп на телефоне
+
+// Свайп на телефоне: в листалке карточки и в просмотре на весь экран
 let touchX = null;
-document.addEventListener("touchstart", e => { if (e.target.closest(".slider")) touchX = e.touches[0].clientX; }, { passive: true });
+document.addEventListener("touchstart", e => { if (e.target.closest(".slider, .lightbox")) touchX = e.touches[0].clientX; }, { passive: true });
 document.addEventListener("touchend", e => {
-  const s = e.target.closest(".slider");
+  const s = e.target.closest(".slider, .lightbox");
   if (!s || touchX === null) return;
   const dx = e.changedTouches[0].clientX - touchX;
-  if (Math.abs(dx) > 40) slide(s, dx < 0 ? 1 : -1);
   touchX = null;
+  if (Math.abs(dx) < 40) return;
+  if (s === lb) lbStep(dx < 0 ? 1 : -1);
+  else slide(s, dx < 0 ? 1 : -1);
 });
 
 function renderData() {

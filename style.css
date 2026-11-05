@@ -123,6 +123,32 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   opacity: 0; transition: opacity .5s ease;
 }
 .card__photo img.on { opacity: 1; }
+.card__photo img:not(.on) { pointer-events: none; }
+/* Просмотр фото на весь экран */
+.card__photo img, .ach__photo img { cursor: zoom-in; }
+.lightbox {
+  position: fixed; inset: 0; z-index: 100; display: grid; place-items: center;
+  background: rgba(5, 6, 8, .92); backdrop-filter: blur(8px);
+  opacity: 0; pointer-events: none; transition: opacity .3s ease;
+}
+.lightbox.open { opacity: 1; pointer-events: auto; }
+.lightbox img {
+  max-width: calc(100vw - 32px); max-height: calc(100vh - 100px); object-fit: contain;
+  border-radius: 12px; transform: scale(.96); transition: transform .3s ease;
+}
+.lightbox.open img { transform: none; }
+.lb__close, .lb__btn {
+  position: absolute; border: 0; cursor: pointer; color: var(--text);
+  background: rgba(255, 255, 255, .08); border-radius: 50%; transition: background .2s;
+}
+.lb__close:hover, .lb__btn:hover { background: rgba(255, 255, 255, .16); }
+.lb__close { top: 16px; right: 16px; width: 44px; height: 44px; font-size: 26px; line-height: 1; }
+.lb__btn { top: 50%; transform: translateY(-50%); width: 48px; height: 48px; font-size: 28px; line-height: 1; }
+.lb__btn.prev { left: 16px; }
+.lb__btn.next { right: 16px; }
+.lb__btn[hidden] { display: none; }
+.lb__count { position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; color: var(--muted); font-size: 14px; }
+
 /* Мероприятия: широкие карточки, фото слева, текст справа */
 #eventCards { grid-template-columns: 1fr; }
 .card__body { display: flex; flex-direction: column; gap: 12px; }
