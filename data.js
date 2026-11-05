@@ -32,6 +32,25 @@ const events = [
       place: "HSE x Business Club, St. Petersburg",
       description: "Dmitry is the founder of the jewelry brand Mozi Jewelry, worn by Timati, OG Buda, Egor Kreed, Slava Marlow, kizaru, OBLADAET and other Russian rap artists. He shared how he grew the business from 50,000 rubles into a strong brand with major clients, how he builds relationships with artists from the first contact to collaborations, and how the business works from the inside: production, pricing and working with media clients."
     }
+  },
+  {
+    title: "GIS DAYS 2026",
+    date: "1 октября 2026",
+    place: "МТС Live Холл, Санкт-Петербург",
+    description: "Ежегодный форум по информационной безопасности, который уже 9 лет собирает экспертов, регуляторов, бизнес, интеграторов и разработчиков. Это три дня открытого диалога о современных киберугрозах и о том, как защищать бизнес, государство и ИТ-инфраструктуру. На форуме был специальный трек для студентов и начинающих специалистов и бизнес-трек о стратегии и управлении ИБ. Я пообщался с профессионалами, узнал о карьерных возможностях в сфере ИБ и послушал экспертные дискуссии о будущем отрасли. Отдельно впечатлил масштаб: на сцене выступал популярный рэпер Toxi$, и это хорошо показывает уровень организации.",
+    photos: [
+      "assets/events/gisdays-1.jpg",
+      "assets/events/gisdays-2.jpg",
+      "assets/events/gisdays-3.jpg",
+      "assets/events/gisdays-4.jpg",
+      "assets/events/gisdays-5.jpg"
+    ],
+    en: {
+      title: "GIS DAYS 2026",
+      date: "October 1, 2026",
+      place: "MTS Live Hall, St. Petersburg",
+      description: "An annual information security forum that has been bringing together experts, regulators, businesses, integrators and developers for 9 years. Three days of open dialogue about modern cyber threats and how to protect businesses, the state and IT infrastructure. The forum had a special track for students and early-career specialists and a business track on security strategy and management. I talked to professionals, learned about career opportunities in information security and listened to expert discussions about the future of the industry. The scale was impressive too: the popular rapper Toxi$ performed on stage, which shows the level of the organization."
+    }
   }
 ];
 
