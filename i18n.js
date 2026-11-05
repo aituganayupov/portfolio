@@ -19,7 +19,7 @@ const EN = {
   btn_resume: "CV",
 
   about_eyebrow: "01 / About",
-  about_title: "Numbers and the mat",
+  about_title: "Hi, I'm Aitugan",
   about_p1: "My name is Aitugan, and I was born in Ufa. I'm a first-year student at HSE University in St. Petersburg, at the St. Petersburg School of Economics and Management, in the Analytics in Economics program.",
   about_p2: "I do taekwondo professionally: I hold a black belt, I'm a Candidate Master of Sports and a medalist of the Russian Championship in my age group. Training, competitions and camps have been a big part of my life and taught me the main things: discipline and working for the result, even when it's hard.",
   about_p3: "I bring the same habits into my studies. I enjoy digging into data, trying myself in projects and case competitions, and going to events where I can learn something new.",
