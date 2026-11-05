@@ -84,7 +84,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
   max-width: 420px; margin-left: auto;
 }
 .photo-frame__ph { position: absolute; inset: 0; display: grid; place-items: center; font-size: 72px; font-weight: 700; color: var(--accent); opacity: .35; }
-.photo-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.photo-frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
 
 /* Разделы */
 .section { padding: clamp(80px, 12vw, 160px) 0; }

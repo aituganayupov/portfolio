@@ -63,7 +63,7 @@ const UI = {
     menu: "Меню",
     to_top: "Наверх",
     // Слова, которые сменяют друг друга в шапке после «Я про»
-    rot: ["данные", "тхэквондо", "результат", "новые задачи"]
+    rot: ["данные", "спорт", "результат", "новые задачи"]
   },
   en: {
     title: "Aitugan Ayupov - portfolio",
@@ -78,6 +78,6 @@ const UI = {
     lang_label: "Переключить на русский",
     menu: "Menu",
     to_top: "Back to top",
-    rot: ["data", "taekwondo", "results", "new challenges"]
+    rot: ["data", "sports", "results", "new challenges"]
   }
 };
