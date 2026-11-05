@@ -13,6 +13,7 @@ const EN = {
 
   hero_eyebrow: "Portfolio",
   hero_name: "Aitugan<br>Ayupov",
+  rot_prefix: "I'm into",
   hero_lead: "HSE student, analytics in economics, athlete.",
   btn_email: "Email",
   btn_resume: "CV",
@@ -60,7 +61,9 @@ const UI = {
     lang_btn: "EN",
     lang_label: "Switch to English",
     menu: "Меню",
-    to_top: "Наверх"
+    to_top: "Наверх",
+    // Слова, которые сменяют друг друга в шапке после «Я про»
+    rot: ["данные", "тхэквондо", "результат", "новые задачи"]
   },
   en: {
     title: "Aitugan Ayupov - portfolio",
@@ -74,6 +77,7 @@ const UI = {
     lang_btn: "RU",
     lang_label: "Переключить на русский",
     menu: "Menu",
-    to_top: "Back to top"
+    to_top: "Back to top",
+    rot: ["data", "taekwondo", "results", "new challenges"]
   }
 };

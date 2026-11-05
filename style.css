@@ -150,6 +150,41 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .footer__links a:hover { color: var(--accent); }
 .footer__copy { margin-top: 80px; color: #5c616a; font-size: 14px; }
 
+/* Полоска прогресса прокрутки */
+.progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 60;
+  background: linear-gradient(90deg, var(--accent), #c9e4d9);
+  transform: scaleX(0); transform-origin: left;
+}
+
+/* Имя с мягким переливом */
+h1 {
+  background: linear-gradient(110deg, var(--text) 35%, var(--accent) 50%, var(--text) 65%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: shimmer 7s ease-in-out infinite;
+}
+@keyframes shimmer { 0%, 100% { background-position: 100% 0; } 50% { background-position: 0 0; } }
+
+/* Сменяющиеся слова в шапке */
+.hero__rotate { margin-top: 24px; font-size: clamp(20px, 2.4vw, 28px); font-weight: 500; letter-spacing: -.01em; }
+.hero__rotate + .hero__lead { margin-top: 10px; }
+.rot {
+  display: inline-block; color: var(--accent);
+  border-bottom: 2px solid var(--accent-soft);
+  transition: opacity .35s ease, transform .35s ease, filter .35s ease;
+}
+.rot.out { opacity: 0; transform: translateY(-10px); filter: blur(4px); }
+
+/* Подсветка за курсором */
+@media (hover: hover) {
+  .card:hover, .fact:hover, .ach:hover {
+    background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(143, 184, 168, .10), transparent 70%), var(--bg-2);
+  }
+  .fact { transition: border-color .3s; }
+  .fact:hover, .ach:hover { border-color: #34383f; }
+}
+
 /* Пустой раздел */
 .empty { color: var(--muted); font-size: 16px; }
 
@@ -166,9 +201,10 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 /* Появление блоков */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
 .reveal.visible { opacity: 1; transform: none; }
-.card.reveal.visible { transition: transform .3s, border-color .3s; }
+.card.reveal.visible { transition: opacity .8s ease, transform .3s, border-color .3s; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
+  h1 { animation: none; }
   html { scroll-behavior: auto; }
 }
 

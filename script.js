@@ -83,7 +83,7 @@ const langToggle = document.getElementById("langToggle");
 const navToggleBtn = document.getElementById("navToggle");
 const metaDesc = document.querySelector('meta[name="description"]');
 
-function applyLang(firstRun) {
+function applyLang() {
   document.documentElement.lang = lang;
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.dataset.i18n;
@@ -96,15 +96,14 @@ function applyLang(firstRun) {
   navToggleBtn.setAttribute("aria-label", ui("menu"));
   document.getElementById("toTop").setAttribute("aria-label", ui("to_top"));
   renderData();
-  // Новые карточки после переключения сразу видимы, при первой загрузке появляются плавно
-  if (firstRun) observeReveal();
-  else document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
+  observeReveal();
+  restartRotation();
 }
 
 langToggle.addEventListener("click", () => {
   lang = lang === "ru" ? "en" : "ru";
   try { localStorage.setItem("lang", lang); } catch (e) {}
-  applyLang(false);
+  applyLang();
 });
 
 document.getElementById("year").textContent = new Date().getFullYear();
@@ -115,9 +114,13 @@ const links = document.getElementById("navLinks");
 const navAnchors = [...links.querySelectorAll("a")];
 const toTop = document.getElementById("toTop");
 
+const progress = document.getElementById("progress");
+
 addEventListener("scroll", () => {
   nav.classList.toggle("scrolled", scrollY > 10);
   toTop.classList.toggle("show", scrollY > 600);
+  const max = document.documentElement.scrollHeight - innerHeight;
+  progress.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
 }, { passive: true });
 navToggleBtn.addEventListener("click", () => {
   const open = links.classList.toggle("open");
@@ -139,17 +142,47 @@ addEventListener("scroll", () => {
   if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) setActive("contacts");
 }, { passive: true });
 
-// Появление блоков
+// Появление блоков: каждый раз, когда блок заходит на экран.
+// Когда блок полностью ушёл с экрана, он снова прячется и в следующий раз появится заново.
+const io = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.intersectionRatio >= 0.1) en.target.classList.add("visible");
+    else if (!en.isIntersecting) en.target.classList.remove("visible");
+  });
+}, { threshold: [0, 0.1] });
+
 function observeReveal() {
-  const io = new IntersectionObserver((entries, obs) => {
-    entries.forEach(en => {
-      if (en.isIntersecting) { en.target.classList.add("visible"); obs.unobserve(en.target); }
-    });
-  }, { threshold: 0.12 });
   document.querySelectorAll(".reveal").forEach((el, i) => {
     el.style.transitionDelay = (i % 3) * 80 + "ms";
     io.observe(el);
   });
 }
 
-applyLang(true);
+// Слова в шапке сменяют друг друга
+const rotWord = document.getElementById("rotWord");
+let rotTimer, rotIndex = 0;
+function restartRotation() {
+  clearInterval(rotTimer);
+  rotIndex = 0;
+  rotWord.textContent = ui("rot")[0];
+  rotTimer = setInterval(() => {
+    rotWord.classList.add("out");
+    setTimeout(() => {
+      const words = ui("rot");
+      rotIndex = (rotIndex + 1) % words.length;
+      rotWord.textContent = words[rotIndex];
+      rotWord.classList.remove("out");
+    }, 350);
+  }, 2400);
+}
+
+// Подсветка карточек за курсором
+document.addEventListener("pointermove", e => {
+  const el = e.target.closest(".card, .fact, .ach");
+  if (!el) return;
+  const r = el.getBoundingClientRect();
+  el.style.setProperty("--mx", e.clientX - r.left + "px");
+  el.style.setProperty("--my", e.clientY - r.top + "px");
+}, { passive: true });
+
+applyLang();
