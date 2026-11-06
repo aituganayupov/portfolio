@@ -142,13 +142,13 @@ const projects = [
 const achievements = [
   {
     year: "Тхэквондо",
-    title: "Призёр первенства России по тхэквондо ВТФ",
+    title: "Призёр первенства России по тхэквондо",
     description: "Первенство России среди юношей и девушек 12-14 лет, Белгород Арена.",
     photo: "assets/achievements/sport-russia.webp",
     photoTall: true,
     en: {
       year: "Taekwondo",
-      title: "Medalist of the Russian WTF Taekwondo Championship",
+      title: "Medalist of the Russian Taekwondo Championship",
       description: "Russian Championship for boys and girls aged 12-14, Belgorod Arena."
     }
   },
@@ -167,12 +167,12 @@ const achievements = [
   {
     year: "Тхэквондо",
     title: "КМС и чёрный пояс",
-    description: "Занимаюсь тхэквондо уже 13 лет. Кандидат в мастера спорта и обладатель чёрного пояса. Ещё дважды получал золотой знак ГТО.",
+    description: "Занимаюсь тхэквондо уже 13 лет. Кандидат в мастера спорта и обладатель чёрного пояса.",
     photo: "",
     en: {
       year: "Taekwondo",
       title: "Candidate Master of Sports and black belt",
-      description: "13 years in taekwondo. Candidate Master of Sports and black belt holder. Also earned the gold GTO badge twice."
+      description: "13 years in taekwondo. Candidate Master of Sports and black belt holder."
     }
   },
   {
