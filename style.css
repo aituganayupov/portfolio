@@ -246,6 +246,22 @@ h1 {
   .fact:hover, .ach:hover { border-color: #34383f; }
 }
 
+/* Итоги в шапке */
+.hero__highlights { display: flex; flex-wrap: wrap; gap: 6px 0; margin: -16px 0 32px; font-size: 14px; color: var(--muted); }
+.hero__highlights span + span::before { content: "·"; margin: 0 10px; color: var(--accent); }
+
+/* Навыки: тихий блок под текстом «О себе» */
+.skills { margin-top: 34px; padding-top: 24px; border-top: 1px solid var(--line); display: grid; gap: 12px; }
+.skills__row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.skills__label { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: #5c616a; min-width: 110px; }
+.skill { font-size: 13px; color: var(--muted); padding: 4px 12px; border: 1px solid var(--line); border-radius: 999px; }
+
+/* Главный проект во всю ширину */
+.card--wide { grid-column: 1 / -1; }
+/* Слайды и макеты показываем целиком, без обрезки */
+.card--wide .card__photo { background: #070809; }
+.card--wide .card__photo img { object-fit: contain; }
+
 /* Пустой раздел */
 .empty { color: var(--muted); font-size: 16px; }
 

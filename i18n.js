@@ -62,6 +62,8 @@ const UI = {
     lang_label: "Switch to English",
     menu: "Меню",
     to_top: "Наверх",
+    skills_hard: "Инструменты",
+    skills_soft: "Soft skills",
     // Слова, которые сменяют друг друга в шапке после «Я про»
     rot: ["данные", "спорт", "результат", "новые задачи"]
   },
@@ -78,6 +80,8 @@ const UI = {
     lang_label: "Переключить на русский",
     menu: "Menu",
     to_top: "Back to top",
+    skills_hard: "Tools",
+    skills_soft: "Soft skills",
     rot: ["data", "sports", "results", "new challenges"]
   }
 };

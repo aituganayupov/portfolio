@@ -118,6 +118,13 @@ document.addEventListener("touchend", e => {
 });
 
 function renderData() {
+  // Итоги в шапке и навыки
+  document.getElementById("highlights").innerHTML =
+    HIGHLIGHTS[lang].map(h => `<span>${esc(h)}</span>`).join("");
+  document.getElementById("skills").innerHTML = `
+    <div class="skills__row"><span class="skills__label">${ui("skills_hard")}</span>${SKILLS.hard.map(s => `<span class="skill">${esc(s)}</span>`).join("")}</div>
+    <div class="skills__row"><span class="skills__label">${ui("skills_soft")}</span>${SKILLS.soft[lang].map(s => `<span class="skill">${esc(s)}</span>`).join("")}</div>`;
+
   // Мероприятия
   fill("eventCards", events, ui("empty_events"), e => {
     const photos = e.photos || (e.photo ? [e.photo] : []);
@@ -135,13 +142,15 @@ function renderData() {
 
   // Проекты и кейс-чемпионаты
   fill("projectCards", projects, ui("empty_projects"), p => `
-    <article class="card reveal" data-type="${esc(p.type)}">
+    <article class="card reveal${p.featured && p.photos ? " card--media card--wide" : ""}" data-type="${esc(p.type)}">
       ${slider(p.photos || [], tr(p, "title"))}
-      <div class="card__top"><span class="tag">${esc(ui(p.type) || p.type)}</span><span class="card__date">${esc(tr(p, "status"))}</span></div>
-      <h3>${esc(tr(p, "title"))}</h3>
-      <p class="card__role">${esc(tr(p, "role"))}</p>
-      <p>${esc(tr(p, "description"))}</p>
-      ${p.link ? `<a class="card__link" href="${esc(p.link)}" target="_blank" rel="noopener">${esc(tr(p, "linkText") || ui("open"))} →</a>` : ""}
+      <div class="card__body">
+        <div class="card__top"><span class="tag">${esc(ui(p.type) || p.type)}</span><span class="card__date">${esc(tr(p, "status"))}</span></div>
+        <h3>${esc(tr(p, "title"))}</h3>
+        <p class="card__role">${esc(tr(p, "role"))}</p>
+        <p>${esc(tr(p, "description"))}</p>
+        ${p.link ? `<a class="card__link" href="${esc(p.link)}" target="_blank" rel="noopener">${esc(tr(p, "linkText") || ui("open"))} →</a>` : ""}
+      </div>
     </article>`);
   applyFilter();
 
@@ -149,7 +158,7 @@ function renderData() {
   fill("achTimeline", achievements, ui("empty_ach"), a => `
     <article class="ach reveal${a.photo ? " has-photo" : ""}">
       <div>
-        <div class="ach__year">${esc(a.year)}</div>
+        <div class="ach__year">${esc(tr(a, "year"))}</div>
         <h3>${esc(tr(a, "title"))}</h3>
         <p>${esc(tr(a, "description"))}</p>
       </div>

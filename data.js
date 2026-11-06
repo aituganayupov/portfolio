@@ -13,11 +13,26 @@ const CONTACTS = {
   github: "", // пусто = кнопка GitHub скрыта
   // Резюме: положите PDF в assets и впишите путь, например "assets/resume.pdf".
   // Пока пусто, кнопка «Резюме» скрыта.
-  resume: ""
+  resume: "assets/resume.pdf"
+};
+
+// Строка с итогами в шапке (через точку)
+const HIGHLIGHTS = {
+  ru: ["Топ-5 инкубатора ВкусВилл", "CUP MOSCOW", "КМС по тхэквондо", "Сборная России"],
+  en: ["Top 5 VkusVill incubator", "CUP MOSCOW", "Taekwondo CMS", "Russian national team"]
+};
+
+// Навыки: скромный блок в разделе «О себе»
+const SKILLS = {
+  hard: ["Excel", "PowerPoint", "Python", "Figma"],
+  soft: {
+    ru: ["Структурирование задач", "Презентация решений", "Работа в команде", "Дисциплина"],
+    en: ["Problem structuring", "Presenting solutions", "Teamwork", "Discipline"]
+  }
 };
 
 // 2. Мероприятия: где я был и в чём участвовал.
-// photos - необязательное поле, список картинок, например ["assets/events/forum.jpg"].
+// photos - необязательное поле, список картинок, например ["assets/events/forum.webp"].
 // Если фото несколько, в карточке появится листалка.
 // link и linkText - необязательная ссылка под описанием (например "#projects" на раздел сайта).
 const events = [
@@ -29,16 +44,16 @@ const events = [
     link: "#projects",
     linkText: "Наш кейс-чемпионат в разделе «Проекты и кейсы»",
     photos: [
-      "assets/events/casestudy-1.jpg",
-      "assets/events/casestudy-2.jpg",
-      "assets/events/casestudy-3.jpg",
-      "assets/events/casestudy-4.jpg",
-      "assets/events/casestudy-5.jpg",
-      "assets/events/casestudy-6.jpg",
-      "assets/events/casestudy-7.jpg",
-      "assets/events/casestudy-8.jpg",
-      "assets/events/casestudy-9.jpg",
-      "assets/events/casestudy-10.jpg"
+      "assets/events/casestudy-1.webp",
+      "assets/events/casestudy-2.webp",
+      "assets/events/casestudy-3.webp",
+      "assets/events/casestudy-4.webp",
+      "assets/events/casestudy-5.webp",
+      "assets/events/casestudy-6.webp",
+      "assets/events/casestudy-7.webp",
+      "assets/events/casestudy-8.webp",
+      "assets/events/casestudy-9.webp",
+      "assets/events/casestudy-10.webp"
     ],
     en: {
       date: "October 2026",
@@ -52,7 +67,7 @@ const events = [
     date: "8 октября 2026",
     place: "ВШЭ x Бизнес-клуб, Санкт-Петербург",
     description: "Дмитрий - основатель ювелирного бренда Mozi Jewelry, его украшения носят Тимати, OG Buda, Егор Крид, Слава Мэрлоу, kizaru, OBLADAET и другие рэп-исполнители. Он рассказал, как прошёл путь от 50 тысяч рублей до сильного бренда с крупными клиентами, как выстраивает отношения с артистами от первого контакта до коллабораций и как устроен бизнес изнутри: производство, ценообразование, работа с медийными клиентами.",
-    photos: ["assets/events/mozi-1.jpg", "assets/events/mozi-2.jpg"],
+    photos: ["assets/events/mozi-1.webp", "assets/events/mozi-2.webp"],
     en: {
       title: "Open lecture by Dmitry Kuznetsov (Mozi J)",
       date: "October 8, 2026",
@@ -66,11 +81,11 @@ const events = [
     place: "МТС Live Холл, Санкт-Петербург",
     description: "Ежегодный форум по информационной безопасности, который уже 9 лет собирает экспертов, регуляторов, бизнес, интеграторов и разработчиков. Это три дня открытого диалога о современных киберугрозах и о том, как защищать бизнес, государство и ИТ-инфраструктуру. На форуме был специальный трек для студентов и начинающих специалистов и бизнес-трек о стратегии и управлении ИБ. Я пообщался с профессионалами, узнал о карьерных возможностях в сфере ИБ и послушал экспертные дискуссии о будущем отрасли. Отдельно впечатлил масштаб: на сцене выступал популярный рэпер Toxi$, и это хорошо показывает уровень организации.",
     photos: [
-      "assets/events/gisdays-1.jpg",
-      "assets/events/gisdays-2.jpg",
-      "assets/events/gisdays-3.jpg",
-      "assets/events/gisdays-4.jpg",
-      "assets/events/gisdays-5.jpg"
+      "assets/events/gisdays-1.webp",
+      "assets/events/gisdays-2.webp",
+      "assets/events/gisdays-3.webp",
+      "assets/events/gisdays-4.webp",
+      "assets/events/gisdays-5.webp"
     ],
     en: {
       title: "GIS DAYS 2026",
@@ -93,7 +108,8 @@ const projects = [
     description: "Это как стартап-инкубатор, только для еды: полный путь создания инновационного продукта питания от идеи до прототипа. Мы делаем жевательный мармелад с креатином в разовых пакетиках. Берёшь, ешь и всё: без шейкера, без порошка и без противного вкуса. В отбор прошли только 5 команд со всей страны и СНГ, и наша команда в их числе. Сейчас мы на этапе производства, продукт в разработке, так что ждите новостей.",
     link: "https://t.me/logos_marmelad_creatin_hseitmo",
     linkText: "Наш Telegram-канал о проекте",
-    photos: ["assets/projects/vkusvill-2.png", "assets/projects/vkusvill-1.webp"],
+    featured: true, // широкая карточка: фото слева, текст справа
+    photos: ["assets/projects/vkusvill-2.webp", "assets/projects/vkusvill-1.webp"],
     en: {
       title: "VkusVill COLLAB 2k26 Incubator: creatine gummies",
       role: "Analyst, HSE x ITMO team",
@@ -109,7 +125,7 @@ const projects = [
     status: "Ждём результатов",
     description: "Вместе с командой Case Cracken мы приняли участие в CUP MOSCOW, одном из самых популярных кейс-чемпионатов страны. Решали кейс от банка ВТБ: как построить систему противодействия мошенничеству, чтобы деньги клиентов были под защитой. Сейчас ждём результатов, но на этом участие в кейс-чемпионатах не заканчивается. Это только начало.",
     link: "",
-    photos: ["assets/projects/cupmoscow-1.png", "assets/projects/cupmoscow-2.webp"],
+    photos: ["assets/projects/cupmoscow-1.webp", "assets/projects/cupmoscow-2.webp"],
     en: {
       title: "CUP MOSCOW: VTB case \"Anti-fraud system\"",
       role: "Analyst, finance, team Case Cracken",
@@ -120,13 +136,47 @@ const projects = [
 ];
 
 // 4. Достижения: спортивные и учебные.
+// year - год или короткая подпись (например «Тхэквондо»).
 // photo - необязательное поле, фото грамоты или медали.
 const achievements = [
+  {
+    year: "Тхэквондо",
+    title: "Призёр первенства России по тхэквондо ВТФ",
+    description: "Первенство России среди юношей и девушек 12-14 лет, Белгород Арена.",
+    photo: "assets/achievements/sport-russia.webp",
+    en: {
+      year: "Taekwondo",
+      title: "Medalist of the Russian WTF Taekwondo Championship",
+      description: "Russian Championship for boys and girls aged 12-14, Belgorod Arena."
+    }
+  },
+  {
+    year: "Тхэквондо",
+    title: "Член сборной России и сборной Республики Башкортостан",
+    description: "Многократный чемпион Республики Башкортостан, чемпион и призёр всероссийских и международных соревнований. Представлял свой регион на многих крупных стартах.",
+    photo: "assets/achievements/sport-medals.webp",
+    en: {
+      year: "Taekwondo",
+      title: "Member of the Russian and Bashkortostan national teams",
+      description: "Multiple champion of the Republic of Bashkortostan, champion and medalist of national and international competitions. Represented my region at many major tournaments."
+    }
+  },
+  {
+    year: "Тхэквондо",
+    title: "КМС и чёрный пояс",
+    description: "Кандидат в мастера спорта и обладатель чёрного пояса по тхэквондо. Ещё дважды получал золотой знак ГТО.",
+    photo: "",
+    en: {
+      year: "Taekwondo",
+      title: "Candidate Master of Sports and black belt",
+      description: "Candidate Master of Sports and taekwondo black belt holder. Also earned the gold GTO badge twice."
+    }
+  },
   {
     year: "2026",
     title: "Диплом BASIC: Кейс-обучение Осень'26",
     description: "Диплом Кейс-клуба Питерской Вышки, выдан 1 ноября 2026. Прослушал курс лекций, прошёл воркшопы и подготовку к кейс-чемпионатам, получил навыки анализа данных, структурирования информации и дизайна от победителей кейс-чемпионатов и опытных менторов.",
-    photo: "assets/achievements/casestudy-diploma.jpg",
+    photo: "assets/achievements/casestudy-diploma.webp",
     en: {
       title: "BASIC diploma: Case Study Autumn'26",
       description: "Diploma from the HSE St. Petersburg Case Club, issued November 1, 2026. Completed a lecture course, workshops and case competition training, gaining skills in data analysis, structuring information and design from case competition winners and experienced mentors."
@@ -136,10 +186,21 @@ const achievements = [
     year: "2026",
     title: "Прошёл отбор в инкубатор КОЛЛАБ 2К26 от ВкусВилл",
     description: "Сертификат участника. Вместе с командой НИУ ВШЭ x ИТМО прошли отбор с проектом мармелада с креатином: в инкубатор взяли только 5 команд со всей страны и СНГ.",
-    photo: "assets/achievements/vkusvill-cert.jpg",
+    photo: "assets/achievements/vkusvill-cert.webp",
     en: {
       title: "Selected for the VkusVill COLLAB 2K26 incubator",
       description: "Participant certificate. Together with the HSE x ITMO team we got selected with our creatine gummies project: only 5 teams from across Russia and the CIS made it into the incubator."
+    }
+  },
+  {
+    year: "Учёба",
+    title: "Поступил в НИУ ВШЭ без вступительных испытаний",
+    description: "Окончил школу с медалью «За особые успехи в учении» II степени. Победитель и призёр олимпиад по обществознанию, истории и математике.",
+    photo: "",
+    en: {
+      year: "Studies",
+      title: "Admitted to HSE University without entrance exams",
+      description: "Graduated from school with a silver medal for academic excellence. Winner and medalist of olympiads in social studies, history and mathematics."
     }
   }
 ];
