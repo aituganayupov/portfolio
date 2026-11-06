@@ -124,6 +124,16 @@ const projects = [
 const achievements = [
   {
     year: "2026",
+    title: "Диплом BASIC: Кейс-обучение Осень'26",
+    description: "Диплом Кейс-клуба Питерской Вышки, выдан 1 ноября 2026. Прослушал курс лекций, прошёл воркшопы и подготовку к кейс-чемпионатам, получил навыки анализа данных, структурирования информации и дизайна от победителей кейс-чемпионатов и опытных менторов.",
+    photo: "assets/achievements/casestudy-diploma.jpg",
+    en: {
+      title: "BASIC diploma: Case Study Autumn'26",
+      description: "Diploma from the HSE St. Petersburg Case Club, issued November 1, 2026. Completed a lecture course, workshops and case competition training, gaining skills in data analysis, structuring information and design from case competition winners and experienced mentors."
+    }
+  },
+  {
+    year: "2026",
     title: "Прошёл отбор в инкубатор КОЛЛАБ 2К26 от ВкусВилл",
     description: "Сертификат участника. Вместе с командой НИУ ВШЭ x ИТМО прошли отбор с проектом мармелада с креатином: в инкубатор взяли только 5 команд со всей страны и СНГ.",
     photo: "assets/achievements/vkusvill-cert.jpg",
