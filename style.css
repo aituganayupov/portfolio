@@ -290,4 +290,5 @@ h1 {
   .timeline { padding-left: 28px; }
   .ach::before { left: -28px; }
   .cards { grid-template-columns: 1fr; }
+  .fact__num { font-size: 24px; overflow-wrap: anywhere; }
 }
