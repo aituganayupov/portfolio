@@ -21,12 +21,12 @@ const EN = {
   about_eyebrow: "01 / About",
   about_title: "Hi, I'm Aitugan",
   about_p1: "My name is Aitugan, and I was born in Ufa, Republic of Bashkortostan. I'm a first-year state-funded student at HSE University in St. Petersburg, at the St. Petersburg School of Economics and Management, in the Analytics in Economics program.",
-  about_p2: "I do taekwondo professionally: I hold a black belt, I'm a Candidate Master of Sports and a medalist of the Russian Championship in my age group. Training, competitions and camps have been a big part of my life and taught me the main things: discipline and working for the result, even when it's hard.",
+  about_p2: "I've been doing taekwondo for 13 years, and at a professional level: I hold a black belt, I'm a Candidate Master of Sports and a medalist of the Russian Championship in my age group. Training, competitions and camps have been a big part of my life and taught me the main things: discipline and working for the result, even when it's hard.",
   about_p3: "I bring the same habits into my studies. I enjoy digging into data, trying myself in projects and case competitions, and going to events where I can learn something new.",
   fact1_num: "HSE SPb",
   fact1_label: "1st year, state-funded, Analytics in Economics",
   fact2_num: "CMS",
-  fact2_label: "Candidate Master of Sports, taekwondo black belt",
+  fact2_label: "13 years in taekwondo, black belt",
   fact3_num: "Bashkortostan",
   fact3_label: "born in Ufa",
 
@@ -63,6 +63,7 @@ const UI = {
     menu: "Меню",
     to_top: "Наверх",
     skills_hard: "Инструменты",
+    takeaway: "Что я вынес",
     skills_soft: "Soft skills",
     // Слова, которые сменяют друг друга в шапке после «Я про»
     rot: ["данные", "спорт", "результат", "новые задачи"]
@@ -81,6 +82,7 @@ const UI = {
     menu: "Menu",
     to_top: "Back to top",
     skills_hard: "Tools",
+    takeaway: "My takeaway",
     skills_soft: "Soft skills",
     rot: ["data", "sports", "results", "new challenges"]
   }

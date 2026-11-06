@@ -118,9 +118,7 @@ document.addEventListener("touchend", e => {
 });
 
 function renderData() {
-  // Итоги в шапке и навыки
-  document.getElementById("highlights").innerHTML =
-    HIGHLIGHTS[lang].map(h => `<span>${esc(h)}</span>`).join("");
+  // Навыки
   document.getElementById("skills").innerHTML = `
     <div class="skills__row"><span class="skills__label">${ui("skills_hard")}</span>${SKILLS.hard.map(s => `<span class="skill">${esc(s)}</span>`).join("")}</div>
     <div class="skills__row"><span class="skills__label">${ui("skills_soft")}</span>${SKILLS.soft[lang].map(s => `<span class="skill">${esc(s)}</span>`).join("")}</div>`;
@@ -135,6 +133,7 @@ function renderData() {
         <div class="card__top"><span class="card__date">${esc(tr(e, "date"))}</span><span class="card__place">${esc(tr(e, "place"))}</span></div>
         <h3>${esc(tr(e, "title"))}</h3>
         <p>${esc(tr(e, "description"))}</p>
+        ${e.takeaway ? `<p class="card__takeaway"><span>${ui("takeaway")}</span>${esc(tr(e, "takeaway"))}</p>` : ""}
         ${e.link ? `<a class="card__link" href="${esc(e.link)}"${e.link.startsWith("#") ? "" : ' target="_blank" rel="noopener"'}>${esc(tr(e, "linkText") || ui("open"))} →</a>` : ""}
       </div>
     </article>`;
@@ -156,7 +155,7 @@ function renderData() {
 
   // Достижения
   fill("achTimeline", achievements, ui("empty_ach"), a => `
-    <article class="ach reveal${a.photo ? " has-photo" : ""}">
+    <article class="ach reveal${a.photo ? " has-photo" : ""}${a.photo && a.photoTall ? " has-tall" : ""}">
       <div>
         <div class="ach__year">${esc(tr(a, "year"))}</div>
         <h3>${esc(tr(a, "title"))}</h3>

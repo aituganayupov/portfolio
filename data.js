@@ -16,12 +16,6 @@ const CONTACTS = {
   resume: "assets/resume.pdf"
 };
 
-// Строка с итогами в шапке (через точку)
-const HIGHLIGHTS = {
-  ru: ["Топ-5 инкубатора ВкусВилл", "CUP MOSCOW", "КМС по тхэквондо", "Сборная России"],
-  en: ["Top 5 VkusVill incubator", "CUP MOSCOW", "Taekwondo CMS", "Russian national team"]
-};
-
 // Навыки: скромный блок в разделе «О себе»
 const SKILLS = {
   hard: ["Excel", "PowerPoint", "Python", "Figma"],
@@ -35,6 +29,7 @@ const SKILLS = {
 // photos - необязательное поле, список картинок, например ["assets/events/forum.webp"].
 // Если фото несколько, в карточке появится листалка.
 // link и linkText - необязательная ссылка под описанием (например "#projects" на раздел сайта).
+// takeaway - необязательная выделенная строка «Что я вынес».
 const events = [
   {
     title: "Case Study Autumn'26",
@@ -43,6 +38,7 @@ const events = [
     description: "В октябре я прошёл отбор на Case Study Autumn'26 - интенсив, который учит решать бизнес-задачи. Здесь учат думать как аналитик и стратег и защищать свои идеи, разбирают реальные кейсы крупных компаний и готовят к главным кейс-чемпионатам страны. Обучение очень помогло, а ещё я нашёл здесь много друзей. С частью из них мы собрали команду и вместе выступили на кейс-чемпионате. Отдельное уважение организаторам: это профессионалы, которые отлично знают своё дело.",
     link: "#projects",
     linkText: "Наш кейс-чемпионат в разделе «Проекты и кейсы»",
+    takeaway: "Любую бизнес-задачу можно разложить на дерево причин, а сильное решение держится на структуре и цифрах, а не на красивых словах.",
     photos: [
       "assets/events/casestudy-1.webp",
       "assets/events/casestudy-2.webp",
@@ -59,7 +55,8 @@ const events = [
       date: "October 2026",
       place: "St. Petersburg",
       description: "In October I got selected for Case Study Autumn'26, an intensive program on solving business problems. It teaches you to think like an analyst and strategist and to defend your ideas, with real cases from major companies and preparation for the country's top case competitions. The program helped me a lot, and I also made many friends there. Some of them became my team, and together we took part in a case competition. Huge respect to the organizers: true professionals who really know what they are doing.",
-      linkText: "Our case competition in Projects & cases"
+      linkText: "Our case competition in Projects & cases",
+      takeaway: "Any business problem can be broken down into an issue tree, and a strong solution rests on structure and numbers, not on nice words."
     }
   },
   {
@@ -67,11 +64,13 @@ const events = [
     date: "8 октября 2026",
     place: "ВШЭ x Бизнес-клуб, Санкт-Петербург",
     description: "Дмитрий - основатель ювелирного бренда Mozi Jewelry, его украшения носят Тимати, OG Buda, Егор Крид, Слава Мэрлоу, kizaru, OBLADAET и другие рэп-исполнители. Он рассказал, как прошёл путь от 50 тысяч рублей до сильного бренда с крупными клиентами, как выстраивает отношения с артистами от первого контакта до коллабораций и как устроен бизнес изнутри: производство, ценообразование, работа с медийными клиентами.",
+    takeaway: "Большой бизнес можно начать с небольших денег. Решают упорство, репутация и умение выстраивать отношения с людьми.",
     photos: ["assets/events/mozi-1.webp", "assets/events/mozi-2.webp"],
     en: {
       title: "Open lecture by Dmitry Kuznetsov (Mozi J)",
       date: "October 8, 2026",
       place: "HSE x Business Club, St. Petersburg",
+      takeaway: "A big business can start with little money. What matters is persistence, reputation and the ability to build relationships with people.",
       description: "Dmitry is the founder of the jewelry brand Mozi Jewelry, worn by Timati, OG Buda, Egor Kreed, Slava Marlow, kizaru, OBLADAET and other Russian rap artists. He shared how he grew the business from 50,000 rubles into a strong brand with major clients, how he builds relationships with artists from the first contact to collaborations, and how the business works from the inside: production, pricing and working with media clients."
     }
   },
@@ -80,6 +79,7 @@ const events = [
     date: "1 октября 2026",
     place: "МТС Live Холл, Санкт-Петербург",
     description: "Ежегодный форум по информационной безопасности, который уже 9 лет собирает экспертов, регуляторов, бизнес, интеграторов и разработчиков. Это три дня открытого диалога о современных киберугрозах и о том, как защищать бизнес, государство и ИТ-инфраструктуру. На форуме был специальный трек для студентов и начинающих специалистов и бизнес-трек о стратегии и управлении ИБ. Я пообщался с профессионалами, узнал о карьерных возможностях в сфере ИБ и послушал экспертные дискуссии о будущем отрасли. Отдельно впечатлил масштаб: на сцене выступал популярный рэпер Toxi$, и это хорошо показывает уровень организации.",
+    takeaway: "Информационная безопасность - это не только технологии, но и бизнес-решения, и аналитикам в этой сфере тоже есть где себя проявить.",
     photos: [
       "assets/events/gisdays-1.webp",
       "assets/events/gisdays-2.webp",
@@ -91,6 +91,7 @@ const events = [
       title: "GIS DAYS 2026",
       date: "October 1, 2026",
       place: "MTS Live Hall, St. Petersburg",
+      takeaway: "Information security is not only about technology but also about business decisions, and there is room for analysts in this field too.",
       description: "An annual information security forum that has been bringing together experts, regulators, businesses, integrators and developers for 9 years. Three days of open dialogue about modern cyber threats and how to protect businesses, the state and IT infrastructure. The forum had a special track for students and early-career specialists and a business track on security strategy and management. I talked to professionals, learned about career opportunities in information security and listened to expert discussions about the future of the industry. The scale was impressive too: the popular rapper Toxi$ performed on stage, which shows the level of the organization."
     }
   }
@@ -144,6 +145,7 @@ const achievements = [
     title: "Призёр первенства России по тхэквондо ВТФ",
     description: "Первенство России среди юношей и девушек 12-14 лет, Белгород Арена.",
     photo: "assets/achievements/sport-russia.webp",
+    photoTall: true,
     en: {
       year: "Taekwondo",
       title: "Medalist of the Russian WTF Taekwondo Championship",
@@ -152,24 +154,25 @@ const achievements = [
   },
   {
     year: "Тхэквондо",
-    title: "Член сборной России и сборной Республики Башкортостан",
-    description: "Многократный чемпион Республики Башкортостан, чемпион и призёр всероссийских и международных соревнований. Представлял свой регион на многих крупных стартах.",
+    title: "Многократный чемпион Республики Башкортостан",
+    description: "Чемпион и призёр всероссийских и международных соревнований. За 13 лет в тхэквондо представлял свой регион на многих крупных стартах.",
     photo: "assets/achievements/sport-medals.webp",
+    photoTall: true, // вертикальное фото показываем целиком
     en: {
       year: "Taekwondo",
-      title: "Member of the Russian and Bashkortostan national teams",
-      description: "Multiple champion of the Republic of Bashkortostan, champion and medalist of national and international competitions. Represented my region at many major tournaments."
+      title: "Multiple champion of the Republic of Bashkortostan",
+      description: "Champion and medalist of national and international competitions. Over 13 years in taekwondo I've represented my region at many major tournaments."
     }
   },
   {
     year: "Тхэквондо",
     title: "КМС и чёрный пояс",
-    description: "Кандидат в мастера спорта и обладатель чёрного пояса по тхэквондо. Ещё дважды получал золотой знак ГТО.",
+    description: "Занимаюсь тхэквондо уже 13 лет. Кандидат в мастера спорта и обладатель чёрного пояса. Ещё дважды получал золотой знак ГТО.",
     photo: "",
     en: {
       year: "Taekwondo",
       title: "Candidate Master of Sports and black belt",
-      description: "Candidate Master of Sports and taekwondo black belt holder. Also earned the gold GTO badge twice."
+      description: "13 years in taekwondo. Candidate Master of Sports and black belt holder. Also earned the gold GTO badge twice."
     }
   },
   {

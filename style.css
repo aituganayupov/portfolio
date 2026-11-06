@@ -200,6 +200,20 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
 .ach p { color: var(--muted); font-size: 15px; }
 .ach__photo { aspect-ratio: 1.414; border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
 .ach__photo img { width: 100%; height: 100%; object-fit: cover; }
+/* Вертикальные фото (например, с медалями) показываем целиком, вместе с лицом */
+.ach.has-tall { grid-template-columns: 1fr 260px; }
+.ach.has-tall .ach__photo { aspect-ratio: 4 / 5; }
+.ach.has-tall .ach__photo img { object-position: center top; }
+
+/* «Что я вынес» в карточках мероприятий */
+.card .card__takeaway {
+  margin-top: 4px; padding: 14px 16px; border-left: 2px solid var(--accent);
+  background: var(--accent-soft); border-radius: 0 10px 10px 0; color: var(--text); font-size: 15px;
+}
+.card__takeaway span {
+  display: block; margin-bottom: 4px; font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--accent); font-weight: 600;
+}
 
 /* Контакты */
 .footer { border-top: 1px solid var(--line); padding: 96px 0 40px; }
@@ -245,10 +259,6 @@ h1 {
   .fact { transition: border-color .3s; }
   .fact:hover, .ach:hover { border-color: #34383f; }
 }
-
-/* Итоги в шапке */
-.hero__highlights { display: flex; flex-wrap: wrap; gap: 6px 0; margin: -16px 0 32px; font-size: 14px; color: var(--muted); }
-.hero__highlights span + span::before { content: "·"; margin: 0 10px; color: var(--accent); }
 
 /* Навыки: тихий блок под текстом «О себе» */
 .skills { margin-top: 34px; padding-top: 24px; border-top: 1px solid var(--line); display: grid; gap: 12px; }
