@@ -155,13 +155,13 @@ const achievements = [
   {
     year: "Тхэквондо",
     title: "Многократный чемпион Республики Башкортостан",
-    description: "Чемпион и призёр всероссийских и международных соревнований. За 13 лет в тхэквондо представлял свой регион на многих крупных стартах.",
+    description: "Чемпион и призёр всероссийских и международных соревнований, многократный стипендиат Министерства спорта. За 13 лет в тхэквондо представлял свой регион на многих крупных стартах.",
     photo: "assets/achievements/sport-medals.webp",
     photoTall: true, // вертикальное фото показываем целиком
     en: {
       year: "Taekwondo",
       title: "Multiple champion of the Republic of Bashkortostan",
-      description: "Champion and medalist of national and international competitions. Over 13 years in taekwondo I've represented my region at many major tournaments."
+      description: "Champion and medalist of national and international competitions, multiple-time scholarship holder of the Ministry of Sport. Over 13 years in taekwondo I've represented my region at many major tournaments."
     }
   },
   {
@@ -198,12 +198,12 @@ const achievements = [
   {
     year: "Учёба",
     title: "Поступил в НИУ ВШЭ без вступительных испытаний",
-    description: "Окончил школу с медалью «За особые успехи в учении» II степени. Победитель и призёр олимпиад по обществознанию, истории и математике.",
+    description: "Окончил школу с медалью «За особые успехи в учении» II степени. За успехи в учёбе награждался премией Главы Республики Башкортостан и Министерства просвещения. Победитель и призёр олимпиад по обществознанию, истории и математике.",
     photo: "",
     en: {
       year: "Studies",
       title: "Admitted to HSE University without entrance exams",
-      description: "Graduated from school with a silver medal for academic excellence. Winner and medalist of olympiads in social studies, history and mathematics."
+      description: "Graduated from school with a silver medal for academic excellence. Received awards from the Head of the Republic of Bashkortostan and the Ministry of Education for academic achievements. Winner and medalist of olympiads in social studies, history and mathematics."
     }
   }
 ];
