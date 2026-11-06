@@ -123,43 +123,13 @@ const projects = [
 // photo - необязательное поле, фото грамоты или медали.
 const achievements = [
   {
-    year: "20XX",
-    title: "Призёр первенства России",
-    description: "Тхэквондо. Допишите возрастную группу, весовую категорию и место.",
-    photo: "",
-    en: {
-      title: "Medalist of the Russian Championship",
-      description: "Taekwondo, in my age group."
-    }
-  },
-  {
-    year: "20XX",
-    title: "Звание КМС",
-    description: "Кандидат в мастера спорта по тхэквондо.",
-    photo: "",
-    en: {
-      title: "Candidate Master of Sports",
-      description: "National sports title in taekwondo."
-    }
-  },
-  {
-    year: "20XX",
-    title: "Чёрный пояс",
-    description: "Сдал экзамен на чёрный пояс по тхэквондо.",
-    photo: "",
-    en: {
-      title: "Black belt",
-      description: "Passed the taekwondo black belt exam."
-    }
-  },
-  {
     year: "2026",
-    title: "Поступил в НИУ ВШЭ",
-    description: "Санкт-Петербургская школа экономики и менеджмента, «Аналитика в экономике».",
-    photo: "",
+    title: "Прошёл отбор в инкубатор КОЛЛАБ 2К26 от ВкусВилл",
+    description: "Сертификат участника. Вместе с командой НИУ ВШЭ x ИТМО прошли отбор с проектом мармелада с креатином: в инкубатор взяли только 5 команд со всей страны и СНГ.",
+    photo: "assets/achievements/vkusvill-cert.jpg",
     en: {
-      title: "Admitted to HSE University",
-      description: "St. Petersburg School of Economics and Management, Analytics in Economics."
+      title: "Selected for the VkusVill COLLAB 2K26 incubator",
+      description: "Participant certificate. Together with the HSE x ITMO team we got selected with our creatine gummies project: only 5 teams from across Russia and the CIS made it into the incubator."
     }
   }
 ];
