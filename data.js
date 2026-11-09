@@ -32,6 +32,20 @@ const SKILLS = {
 // takeaway - необязательная выделенная строка «Что я вынес».
 const events = [
   {
+    title: "Альфа Будущее Фест",
+    date: "2026",
+    place: "Санкт-Петербург",
+    description: "Фестиваль Альфа-Банка о карьере, трендах и музыке. Днём выступали эксперты: как запускать большие проекты и расти вместе с ними, как ИИ-агенты помогают решать задачи, как стиль влияет на карьеру, как строить сильное сообщество и развивать бизнес без готового рецепта. Между лекциями были панельные дискуссии, а вечером концерт: Gorilla Glu, Lil Naku и хедлайнер Хаски.",
+    takeaway: "Карьера строится не только на знаниях: личный стиль, сообщество вокруг тебя и смелость запускать свои проекты значат не меньше.",
+    photos: ["assets/events/alfa-1.webp", "assets/events/alfa-2.webp"],
+    en: {
+      title: "Alfa Future Fest",
+      place: "St. Petersburg",
+      description: "Alfa-Bank's festival about careers, trends and music. During the day, experts talked about launching big projects and growing with them, how AI agents help solve tasks, how style shapes a career, how to build a strong community and grow a business without a ready-made recipe. Panel discussions ran between the talks, and in the evening there was a concert with Gorilla Glu, Lil Naku and headliner Husky.",
+      takeaway: "A career is built not only on knowledge: personal style, the community around you and the courage to launch your own projects matter just as much."
+    }
+  },
+  {
     title: "Case Study Autumn'26",
     date: "Октябрь 2026",
     place: "Санкт-Петербург",
